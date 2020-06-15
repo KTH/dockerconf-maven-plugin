@@ -9,39 +9,19 @@ import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
 
 @MavenJupiterExtension
-@MavenGoal("process-classes")
+@MavenGoal("validate")
 @MavenRepository
 class DockerConfGenerateIT {
 
   @MavenTest
   void success(MavenExecutionResult result) {
-    String expectedDockerConf =
-        "IMAGE_NAME=\"test\"\n" +
-        "IMAGE_VERSION=\"3.1\"\n";
-
     assertThat(result)
-        .isSuccessful()
-        .project()
-        .withFile("../docker.conf")
-            .hasContent(expectedDockerConf);
+        .isSuccessful();
   }
 
   @MavenTest
   void failure_missing_image_name(MavenExecutionResult result) {
-    String expectedDockerConf =
-        "IMAGE_NAME=\"failure_missing_image_name\"\n" +
-        "IMAGE_VERSION=\"3.0\"\n";
-
-
-
     assertThat(result)
-        .isFailure()
-        .err()
-            .error().contains("imageName");
-
-//    assertThat(result)
-//        .project()
-//        .withFile("../docker.conf")
-//            .hasContent(expectedDockerConf);
+        .isFailure();
   }
 }
