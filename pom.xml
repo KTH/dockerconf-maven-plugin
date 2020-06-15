@@ -213,11 +213,11 @@
   <distributionManagement>
     <repository>
       <id>integration</id>
-      <url>$(kth-artifact-repo-url)</url>
+      <url>${kth-artifact-repo-url}</url>
     </repository>
     <snapshotRepository>
       <id>integration</id>
-      <url>$(kth-artifact-repo-url)</url>
+      <url>${kth-artifact-repo-url}</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
