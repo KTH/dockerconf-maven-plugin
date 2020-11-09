@@ -102,7 +102,7 @@
         <filtering>false</filtering>
       </testResource>
       <testResource>
-        <directory>src/test/resources-its</directory>
+        <directory>src/test/resources-it</directory>
         <filtering>true</filtering>
       </testResource>
     </testResources>
@@ -189,17 +189,15 @@
         </executions>
       </plugin>
 
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-<!--          <systemProperties>-->
-<!--            <maven.version>${maven.version}</maven.version>-->
-<!--            <maven.home>${project.build.pluginManagement}</maven.home>-->
-<!--            <forkCount>0</forkCount>-->
-<!--          </systemProperties>-->
+          <systemProperties>
+            <maven.version>${maven.version}</maven.version>
+            <maven.home>${maven.home}</maven.home>
+          </systemProperties>
         </configuration>
         <executions>
           <execution>

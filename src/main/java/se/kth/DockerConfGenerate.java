@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -39,9 +37,14 @@ public class DockerConfGenerate extends AbstractMojo {
       throw new MojoExecutionException("Missing configuration parameter 'imageName' in plugin configuration");
     }
 
-    Pattern pattern = Pattern.compile("(\\d*\\.\\d)");
-    Matcher matcher = pattern.matcher(pomVersion);
-    String dockerConfVersion = matcher.group();
+    String[] split = pomVersion.split("\\.");
+    String dockerConfVersion = split[0] + "." + split[1];
+
+    if (split.length < 2) {
+      throw new MojoExecutionException(
+          "Version must contain at least major and minor version. " +
+          "Current version was: " + pomVersion);
+    }
 
     String fileContent =
         "IMAGE_NAME=\"" + imageName + "\"\n" +
@@ -53,17 +56,4 @@ public class DockerConfGenerate extends AbstractMojo {
       throw new MojoExecutionException("Failed to write docker.conf", e);
     }
   }
-
-  public void setPomVersion(String pomVersion) {
-    this.pomVersion = pomVersion;
-  }
-
-  public void setDirectory(File directory) {
-    this.directory = directory;
-  }
-
-  public void setImageName(String imageName) {
-    this.imageName = imageName;
-  }
-
 }
