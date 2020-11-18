@@ -1,4 +1,4 @@
-package se.kth.it;
+package se.kth.maven.plugin.it;
 
 import static com.soebes.itf.extension.assertj.MavenITAssertions.assertThat;
 
@@ -11,7 +11,7 @@ import com.soebes.itf.jupiter.maven.MavenExecutionResult;
 @MavenJupiterExtension
 @MavenGoal("validate")
 @MavenRepository
-class DockerConfGenerateIT {
+class DockerConfValidateIT {
 
   @MavenTest
   void success(MavenExecutionResult result) {
@@ -20,7 +20,7 @@ class DockerConfGenerateIT {
   }
 
   @MavenTest
-  void failure_missing_image_name(MavenExecutionResult result) {
+  void failure(MavenExecutionResult result) {
     assertThat(result)
         .isFailure();
   }

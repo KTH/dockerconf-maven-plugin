@@ -21,15 +21,15 @@
         <groupId>se.kth</groupId>
         <artifactId>dockerconf-maven-plugin</artifactId>
         <version>@project.version@</version>
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>failure_missing_image_name</id>-->
-<!--            <phase>process-sources</phase>-->
-<!--            <goals>-->
-<!--              <goal>install</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
+        <executions>
+          <execution>
+            <id>failure</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
