@@ -9,7 +9,7 @@ import com.soebes.itf.jupiter.extension.MavenTest;
 import com.soebes.itf.jupiter.maven.MavenExecutionResult;
 
 @MavenJupiterExtension
-@MavenGoal("validate")
+@MavenGoal("package")
 @MavenRepository
 class DockerConfValidateIT {
 
