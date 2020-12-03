@@ -7,7 +7,7 @@
 
   <groupId>se.kth</groupId>
   <artifactId>dockerconf-maven-plugin</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <packaging>maven-plugin</packaging>
 
   <name>dockerconf-maven-plugin Maven Plugin</name>
@@ -63,7 +63,7 @@
       <artifactId>maven-compat</artifactId>
       <version>${maven.version}</version>
       <scope>test</scope>
-    </dependency> 
+    </dependency>
     <dependency>
       <groupId>org.apache.maven.plugin-tools</groupId>
       <artifactId>maven-plugin-annotations</artifactId>
