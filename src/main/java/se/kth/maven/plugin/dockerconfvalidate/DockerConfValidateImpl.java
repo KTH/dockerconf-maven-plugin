@@ -17,7 +17,8 @@ public class DockerConfValidateImpl {
       throws MojoFailureException, MojoExecutionException {
 
     if (!dockerConfFile.exists() || !dockerConfFile.isFile()) {
-      throw new MojoExecutionException("docker.conf is missing in project directory");
+      throw new MojoExecutionException("docker.conf is missing in project directory [" +
+          dockerConfFile.getAbsolutePath() + "]");
     }
     final String[] pomVersionSplit = pomVersion.split("\\.");
     if (pomVersionSplit.length < 2) {
